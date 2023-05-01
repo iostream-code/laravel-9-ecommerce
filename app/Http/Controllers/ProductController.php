@@ -48,8 +48,13 @@ class ProductController extends Controller
         return view('products', compact('products'));
     }
 
-    public function detailProducts(Request $req)
+    public function detailProduct(Product $product)
     {
         return view('product_detail', compact('product'));
+    }
+
+    public function editProduct(Product $product)
+    {
+        return view('product_edit', compact('product'));
     }
 }

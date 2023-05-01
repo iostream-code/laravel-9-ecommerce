@@ -24,8 +24,10 @@
                         <td>{{ $item->stock }}</td>
                         <td><img src="{{ url('storage/' . $item->image) }}" alt="" height="100px"></td>
                         <td>
-                            <button>Edit</button>
-                            <button>Delete</button>
+                            <form action="{{ route('product', $item) }}" method="get">
+                                <button type="submit">Show</button>
+                                <button>Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach
