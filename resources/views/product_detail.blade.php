@@ -20,9 +20,20 @@
                     <li class="list-group-item">
                         <form action="{{ route('edit_product', $product) }}" method="get">
                             @csrf
-                            <button type="submit">
+                            <button class="btn btn-outline-success" type="submit">
                                 Edit
                             </button>
+                        </form>
+                    </li>
+                    <li class="list-group-item">
+                        <form action="{{ route('add_to_cart', $product) }}" method="post">
+                            @csrf
+                            <div class="form-floating mb-3">
+                                <input class="form-control" type="number" name="amount" placeholder="Please enter the amount">
+                                <label>Amount</label>
+                            </div>
+
+                            <button class="btn btn-outline-primary" type="submit">Add to Cart</button>
                         </form>
                     </li>
                 </ul>

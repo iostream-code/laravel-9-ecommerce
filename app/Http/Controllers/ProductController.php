@@ -57,4 +57,37 @@ class ProductController extends Controller
     {
         return view('product_edit', compact('product'));
     }
+
+    public function updateProduct(Request $req, Product $product)
+    {
+        $req->validate([
+            'name' => 'required',
+            'price' => 'required',
+            'stock' => 'required',
+            'description' => 'required',
+            'image' => 'required',
+        ]);
+
+        $file = $req->file('image');
+        $path = time() . '_' . $req->name . '.' . $file->getClientOriginalExtension();
+
+        Storage::disk('local')->put('public/' . $path, file_get_contents($file));
+
+        $product->update([
+            'name' => $req->name,
+            'price' => $req->price,
+            'stock' => $req->stock,
+            'description' => $req->description,
+            'image' => $path,
+        ]);
+
+        return Redirect::route('products');
+    }
+
+    public function deleteProduct(Product $product)
+    {
+        $product->delete();
+
+        return Redirect::route('products');
+    }
 }

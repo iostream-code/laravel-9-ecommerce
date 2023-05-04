@@ -7,7 +7,8 @@
                 <div class="card">
                     <div class="card-header">{{ __('Edit Product') }}</div>
                     <div class="card-body">
-                        <form action="" method="post">
+                        <form action="{{ route('update_product', $product) }}" method="post" enctype="multipart/form-data">
+                            @method('patch')
                             @csrf
                             <div class="mb-3">
                                 <label class="form-label">Name</label>
@@ -28,7 +29,7 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Image</label>
-                                <input class="form-control" type="file" name="image" value="{{ $product->imaeg }}">
+                                <input class="form-control" type="file" name="image" value="{{ $product->image }}">
                             </div>
 
                             <button class="btn btn-outline-success" type="submit">Save</button>

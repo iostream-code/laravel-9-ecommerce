@@ -25,8 +25,13 @@
                         <td><img src="{{ url('storage/' . $item->image) }}" alt="" height="100px"></td>
                         <td>
                             <form action="{{ route('product', $item) }}" method="get">
+                                @csrf
                                 <button type="submit">Show</button>
-                                <button>Delete</button>
+                            </form>
+                            <form action="{{ route('delete_product', $item) }}" method="post">
+                                @method('delete')
+                                @csrf
+                                <button type="submit">Delete</button>
                             </form>
                         </td>
                     </tr>
