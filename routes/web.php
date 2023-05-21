@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +43,10 @@ Route::post('/cart/{product}', [CartController::class, 'addToCart'])->name('add_
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart');
 Route::patch('/cart/{cart}', [CartController::class, 'updateCart'])->name('update_cart');
 Route::delete('/cart/{cart}', [CartController::class, 'deleteCart'])->name('delete_cart');
+
+//Order Route
+Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout');
+Route::get('/orders', [OrderController::class, 'orders'])->name('orders');
+Route::get('/order/{order}', [OrderController::class, 'detailOrder'])->name('detail_order');
+Route::post('/order/{order}/pay', [OrderController::class, 'submitPayment'])->name('submit_payment');
+

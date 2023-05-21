@@ -41,11 +41,15 @@
                     </div>
                 @endforeach
                 <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded">
-                    <button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button">Proceed to Pay</button>
-                    <form action="{{ route('products') }}" method="get">
+                    <form action="{{ route('checkout') }}" method="post">
+                        @csrf
+                        <button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="submit">Proceed to
+                            Pay</button>
+                    </form>
+                    {{-- <form action="{{ route('products') }}" method="get">
                         @csrf
                         <button class="btn btn-primary btn-block btn-lg ml-2 pay-button" type="submit">Back</button>
-                    </form>
+                    </form> --}}
                 </div>
             </div>
         </div>

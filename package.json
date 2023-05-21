@@ -21,6 +21,7 @@
         "sass": "^1.56.1"
     },
     "dependencies": {
+        "bootstrap-icons": "^1.10.5",
         "vite": "^4.3.3"
     }
 }
