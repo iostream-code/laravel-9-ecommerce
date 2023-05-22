@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,4 +50,9 @@ Route::post('/checkout', [OrderController::class, 'checkout'])->name('checkout')
 Route::get('/orders', [OrderController::class, 'orders'])->name('orders');
 Route::get('/order/{order}', [OrderController::class, 'detailOrder'])->name('detail_order');
 Route::post('/order/{order}/pay', [OrderController::class, 'submitPayment'])->name('submit_payment');
+Route::post('/order/{order}/confirm', [OrderController::class, 'confirmPayment'])->name('confirm_payment');
 
+//Profile Route
+Route::get('/profile', [ProfileController::class, 'showProfile'])->name('profile');
+Route::get('/profile/{user}/edit', [ProfileController::class, 'editProfile'])->name('edit_profile');
+Route::patch('/profile/{user}/update', [ProfileController::class, 'updateProfile'])->name('update_profile');

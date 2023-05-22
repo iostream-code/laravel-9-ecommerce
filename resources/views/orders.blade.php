@@ -21,7 +21,11 @@
                         <td>{{ $order->user->name }}</td>
                         <td>{{ $order->created_at }}</td>
                         @if ($order->is_paid != 0)
-                            <td><span class="badge text-bg-success">Paid</span></td>
+                            <td>
+                                <a href="{{ url('storage/' . $order->payment_receipt) }}">
+                                    <span class="badge text-bg-success">Paid</span>
+                                </a>
+                            </td>
                         @elseif ($order->is_paid == 0)
                             <td><span class="badge text-bg-danger">unpaid</span></td>
                         @endif
@@ -35,8 +39,14 @@
                             <form action="" method="post">
                                 @method('delete')
                                 @csrf
-                                <button class="btn btn-danger btn-sm" type="submit">
+                                <button class="btn btn-danger mb-2 btn-sm" type="submit">
                                     <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
+                            <form action="{{ route('confirm_payment', $order) }}" method="post">
+                                @csrf
+                                <button class="btn btn-success btn-sm" type="submit">
+                                    <i class="bi bi-check-circle-fill"></i>
                                 </button>
                             </form>
                         </td>

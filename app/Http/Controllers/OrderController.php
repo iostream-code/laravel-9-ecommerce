@@ -66,7 +66,16 @@ class OrderController extends Controller
         Storage::disk('local')->put('public/' . $path, file_get_contents($file));
 
         $order->update([
-            'payment_receipt' => $path, 
+            'payment_receipt' => $path,
+        ]);
+
+        return Redirect::back();
+    }
+
+    public function confirmPayment(Order $order)
+    {
+        $order->update([
+            'is_paid' => true,
         ]);
 
         return Redirect::back();
